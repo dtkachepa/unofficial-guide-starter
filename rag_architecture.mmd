@@ -1,0 +1,8 @@
+flowchart LR
+    A["Local .txt files<br/>data/raw/"] --> B["Cleaning<br/>remove metadata headers, boilerplate, empty lines"]
+    B --> C["Paragraph-aware chunking<br/>target 700 chars, 100 char overlap"]
+    C --> D["Embeddings<br/>sentence-transformers/all-MiniLM-L6-v2"]
+    D --> E["Vector store<br/>ChromaDB"]
+    E --> F["Retrieval<br/>top-k semantic search, k=4"]
+    F --> G["Generation<br/>Groq llama-3.3-70b-versatile"]
+    G --> H["Interface<br/>Gradio web app"]
